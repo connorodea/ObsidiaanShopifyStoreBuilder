@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for StoreForge AI */
+:root {
+  --sf-primary: #3b82f6;
+  --sf-secondary: #1e40af;
+  --sf-accent: #f59e0b;
+  --sf-success: #10b981;
+  --sf-error: #ef4444;
+  --sf-warning: #f59e0b;
+  --sf-info: #06b6d4;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+/* Shopify Polaris overrides */
+.Polaris-Frame {
+  height: 100vh;
+}
+
+.Polaris-Navigation {
+  background-color: var(--sf-primary);
+}
+
+.Polaris-Navigation__Item--selected {
+  background-color: var(--sf-secondary);
+}
+
+/* Custom components */
+.sf-hero {
+  background: linear-gradient(135deg, var(--sf-primary), var(--sf-secondary));
+}
+
+.sf-card {
+  @apply bg-white rounded-lg shadow-md p-6 border border-gray-200;
+}
+
+.sf-button-primary {
+  @apply bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200;
+}
+
+.sf-button-secondary {
+  @apply bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-lg transition duration-200;
+}
+
+.sf-input {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+}
+
+.sf-progress-bar {
+  @apply w-full bg-gray-200 rounded-full h-2;
+}
+
+.sf-progress-fill {
+  @apply bg-blue-600 h-2 rounded-full transition-all duration-500 ease-out;
+}
+
+/* Loading states */
+.sf-skeleton {
+  @apply animate-pulse bg-gray-200 rounded;
+}
+
+.sf-spinner {
+  @apply animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600;
+}
+
+/* Responsive utilities */
+.sf-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.sf-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+.sf-flex-center {
+  @apply flex items-center justify-center;
+}
+
+/* Status indicators */
+.sf-status-generating {
+  @apply bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-sm font-medium;
+}
+
+.sf-status-completed {
+  @apply bg-green-100 text-green-800 px-2 py-1 rounded-full text-sm font-medium;
+}
+
+.sf-status-error {
+  @apply bg-red-100 text-red-800 px-2 py-1 rounded-full text-sm font-medium;
+}
+
+.sf-status-published {
+  @apply bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm font-medium;
+}
+
+/* Animations */
+@keyframes sf-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sf-fade-in {
+  animation: sf-fade-in 0.3s ease-out;
+}
+
+@keyframes sf-slide-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.sf-slide-in {
+  animation: sf-slide-in 0.3s ease-out;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .sf-container {
+    @apply px-2;
+  }
+  
+  .sf-grid {
+    @apply grid-cols-1 gap-4;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .sf-card {
+    @apply bg-gray-800 border-gray-700 text-white;
+  }
+  
+  .sf-input {
+    @apply bg-gray-700 border-gray-600 text-white;
+  }
+}
